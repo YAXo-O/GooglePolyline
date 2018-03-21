@@ -6,6 +6,8 @@
 
 namespace gpolyline
 {
+    typedef void (*pointCallback)(double longitude, double latitude);
+
     class GPoint
     {
     public:
@@ -45,8 +47,7 @@ namespace gpolyline
 
     std::string encode(GPoint point);
     std::string encode(double longitude, double latitude, double factor = 1e5);
-    std::string encodeNumber(int number);
-
+    void decode(const std::string &polyline, pointCallback callback, double factor = 1e5);
 }
 
 #endif // GOOGLEPOLYLINECODER_H
