@@ -44,7 +44,7 @@ namespace gpolyline
     int round(double value);
 
     std::string encode(GPoint point);
-    std::string encode(double longitude, double latitude, double factor);
+    std::string encode(double longitude, double latitude, double factor = 1e5);
     std::string encodeNumber(int number);
 
 }
