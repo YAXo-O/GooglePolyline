@@ -204,3 +204,19 @@ void gpolyline::decode(const std::string &polyline, gpolyline::pointCallback cal
         callback(double(longitude)/factor, double(latitude)/factor);
     }
 }
+
+void gpolyline::decode(const std::string &polyline, gpolyline::DecoderFunctor *functor, double factor)
+{
+    if(factor == 0)
+        throw std::invalid_argument("Factor can't be zero!");
+
+    std::size_t index = 0;
+    std::size_t length = polyline.size();
+    while(index < length)
+    {
+        int latitude = decodeNumber(polyline, index);
+        int longitude = decodeNumber(polyline, index);
+
+        functor->operator ()(double(longitude)/factor, double(latitude)/factor);
+    }
+}
