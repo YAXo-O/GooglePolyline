@@ -26,9 +26,9 @@ void decode(const std::string &polyline, pointCallback callback, double factor =
 void decode(const std::string &polyline, DecoderFunctor *functor, double factor = 1e5) throw(std::invalid_argument); // (2)
 ```
 To decode use either of the versions of decode() from above.
-Polyline parameter is a string representing encoded route, factor as in decode is optional and is set to 1e5 as suggested by Google.
+Polyline parameter is a string representing encoded route, factor as in encode is optional and is set to 1e5 as suggested by Google.
 Exception is thrown when factor is set to zero.
-The difference between decode() functoins is in the way thay treat a point. 
+The difference between decode() functions is in the way thay treat a point. 
 
 Version (1) sends a newly decoded point as 
 arguments of a callback function. A callback function's prototype:
