@@ -189,7 +189,7 @@ int decodeNumber(const std::string &polyline, std::size_t &index)
 
 }
 
-void gpolyline::decode(const std::string &polyline, gpolyline::pointCallback callback, double factor)
+void gpolyline::decode(const std::string &polyline, gpolyline::pointCallback callback, double factor) throw(std::invalid_argument)
 {
     if(factor == 0)
         throw std::invalid_argument("Factor can't be zero!");
@@ -205,7 +205,7 @@ void gpolyline::decode(const std::string &polyline, gpolyline::pointCallback cal
     }
 }
 
-void gpolyline::decode(const std::string &polyline, gpolyline::DecoderFunctor *functor, double factor)
+void gpolyline::decode(const std::string &polyline, gpolyline::DecoderFunctor *functor, double factor) throw(std::invalid_argument)
 {
     if(factor == 0)
         throw std::invalid_argument("Factor can't be zero!");

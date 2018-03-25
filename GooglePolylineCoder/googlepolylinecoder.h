@@ -43,11 +43,21 @@ namespace gpolyline
         int latitude;
     };
 
+    class DecoderFunctor
+    {
+    public:
+        DecoderFunctor() = delete;
+        virtual ~DecoderFunctor() = delete;
+
+        virtual void operator()(double longitude, double latitude) = 0;
+    };
+
     int round(double value);
 
     std::string encode(GPoint point);
     std::string encode(double longitude, double latitude, double factor = 1e5);
-    void decode(const std::string &polyline, pointCallback callback, double factor = 1e5);
+    void decode(const std::string &polyline, pointCallback callback, double factor = 1e5) throw(std::invalid_argument);
+    void decode(const std::string &polyline, DecoderFunctor *functor, double factor = 1e5) throw(std::invalid_argument);
 }
 
 #endif // GOOGLEPOLYLINECODER_H
