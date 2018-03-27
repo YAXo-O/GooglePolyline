@@ -46,8 +46,8 @@ namespace gpolyline
     class DecoderFunctor
     {
     public:
-        DecoderFunctor() = delete;
-        virtual ~DecoderFunctor() = delete;
+        DecoderFunctor() = default;
+        virtual ~DecoderFunctor() {}
 
         virtual void operator()(double longitude, double latitude) = 0;
     };
